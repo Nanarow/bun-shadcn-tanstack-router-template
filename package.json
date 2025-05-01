@@ -6,15 +6,18 @@
   "main": "src/index.tsx",
   "module": "src/index.tsx",
   "scripts": {
-    "dev": "bun --hot src/index.tsx",
+    "generate-routes": "tsr generate",
+    "watch-routes": "tsr watch",
+    "dev": "bun run watch-routes & bun --hot src/index.tsx",
     "start": "NODE_ENV=production bun src/index.tsx",
-    "build": "bun run build.ts"
+    "build": "bun run generate-routes && bun run build.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.0",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",
+    "@tanstack/react-router": "^1.119.0",
     "bun-plugin-tailwind": "^0.0.14",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -28,8 +31,9 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@tanstack/router-cli": "^1.119.0",
+    "@types/bun": "latest",
     "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@types/bun": "latest"
+    "@types/react-dom": "^19"
   }
 }
